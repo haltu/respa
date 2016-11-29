@@ -7,4 +7,4 @@ ADD Docker/apiserver/docker-entrypoint.sh /code/docker-entrypoint.sh
 RUN chmod +x /code/docker-entrypoint.sh
 WORKDIR /code
 RUN mv Docker/apiserver/docker-django-settings.py local_settings.py
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt && pip install uwsgi
