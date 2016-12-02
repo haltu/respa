@@ -17,7 +17,7 @@ from django.conf.urls import include, url
 from django.conf import settings
 from django.conf.urls.static import static
 from helusers import admin
-from django.utils.translation import ugettext_lazy
+from django.views.generic.base import RedirectView
 
 from resources.api import RespaAPIRouter
 from resources.views.images import ResourceImageView
@@ -37,6 +37,7 @@ urlpatterns = [
     url(r'^translated_models$', export_translated_models, name='export-translations-view'),
     url(r'^v1/', include(router.urls)),
     url(r'^v1/reservation/ical/(?P<ical_token>[-\w\d]+).ics$', ICalFeedView.as_view(), name='ical-feed'),
+    url(r'^$', RedirectView.as_view(url='v1/'))
 ]
 
 if settings.DEBUG:
